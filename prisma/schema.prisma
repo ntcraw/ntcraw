@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Concept {
+  id          String   @id @default(cuid())
+  title       String
+  summary     String
+  level       String   // beginner, intermediate, advanced
+  tags        String   // JSON array
+  prereqIds   String   // JSON array of concept IDs
+  resources   String   // JSON array of resource objects
+  domain      String   // compute, storage, networking, etc.
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  instances   Instance[]
+  lessons     LessonConcept[]
+
+  @@index([domain])
+  @@index([level])
+}
+
+model Lesson {
+  id                  String   @id @default(cuid())
+  title               String
+  problem             String
+  constraints         String   // JSON array
+  objectives          String   // JSON array
+  requiredConceptIds  String   // JSON array
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  instances           Instance[]
+  concepts            LessonConcept[]
+  podcasts            Podcast[]
+  exports             Export[]
+  progress            Progress[]
+}
+
+model LessonConcept {
+  lessonId    String
+  conceptId   String
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  concept     Concept  @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+
+  @@id([lessonId, conceptId])
+}
+
+model Instance {
+  id          String   @id @default(cuid())
+  lessonId    String
+  conceptId   String
+  title       String
+  contentMdx  String
+  imageBase64 String?
+  quiz        String   // JSON array
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  concept     Concept  @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+
+  @@index([lessonId])
+  @@index([conceptId])
+}
+
+model Podcast {
+  id          String   @id @default(cuid())
+  lessonId    String
+  scriptMdx   String
+  audioBase64 String?
+  chapters    String   // JSON array
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@index([lessonId])
+}
+
+model Export {
+  id              String   @id @default(cuid())
+  lessonId        String
+  htmlBlob        String
+  createdAt       DateTime @default(now())
+
+  lesson          Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@index([lessonId])
+}
+
+model Progress {
+  id            String   @id @default(cuid())
+  localKey      String   // browser fingerprint or session id
+  lessonId      String
+  status        String   // not_started, in_progress, completed
+  scores        String   // JSON object
+  weakConcepts  String   // JSON array of concept IDs
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  lesson        Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@unique([localKey, lessonId])
+  @@index([localKey])
+}

@@ -1,0 +1,854 @@
+[
+  {
+    "id": "c001",
+    "title": "Distributed Training Basics",
+    "summary": "Understanding how to split model training across multiple devices or machines",
+    "level": "beginner",
+    "domain": "training",
+    "tags": ["distributed-systems", "training", "fundamentals"],
+    "prereqIds": [],
+    "resources": [
+      {"type": "doc", "url": "https://pytorch.org/tutorials/beginner/dist_overview.html", "title": "PyTorch Distributed Overview"}
+    ]
+  },
+  {
+    "id": "c002",
+    "title": "Data Parallelism",
+    "summary": "Replicating model across devices and splitting data batches",
+    "level": "beginner",
+    "domain": "training",
+    "tags": ["parallelism", "training", "optimization"],
+    "prereqIds": ["c001"],
+    "resources": []
+  },
+  {
+    "id": "c003",
+    "title": "Model Parallelism",
+    "summary": "Splitting model layers across different devices",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["parallelism", "training", "large-models"],
+    "prereqIds": ["c001"],
+    "resources": []
+  },
+  {
+    "id": "c004",
+    "title": "Pipeline Parallelism",
+    "summary": "Dividing model into stages and processing micro-batches in pipeline",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["parallelism", "training", "optimization"],
+    "prereqIds": ["c003"],
+    "resources": []
+  },
+  {
+    "id": "c005",
+    "title": "Tensor Parallelism",
+    "summary": "Splitting individual tensors/operations across devices",
+    "level": "advanced",
+    "domain": "training",
+    "tags": ["parallelism", "training", "advanced"],
+    "prereqIds": ["c003"],
+    "resources": []
+  },
+  {
+    "id": "c006",
+    "title": "Mixed Precision Training",
+    "summary": "Using FP16/BF16 alongside FP32 to reduce memory and speed up training",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["optimization", "memory", "performance"],
+    "prereqIds": ["c001"],
+    "resources": []
+  },
+  {
+    "id": "c007",
+    "title": "Gradient Accumulation",
+    "summary": "Accumulating gradients over multiple mini-batches before updating",
+    "level": "beginner",
+    "domain": "training",
+    "tags": ["optimization", "memory", "training"],
+    "prereqIds": ["c001"],
+    "resources": []
+  },
+  {
+    "id": "c008",
+    "title": "Gradient Checkpointing",
+    "summary": "Trading compute for memory by recomputing activations during backward pass",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["optimization", "memory", "training"],
+    "prereqIds": ["c001"],
+    "resources": []
+  },
+  {
+    "id": "c009",
+    "title": "ZeRO (Zero Redundancy Optimizer)",
+    "summary": "Sharding optimizer states, gradients, and parameters across devices",
+    "level": "advanced",
+    "domain": "training",
+    "tags": ["optimization", "memory", "distributed"],
+    "prereqIds": ["c002", "c003"],
+    "resources": []
+  },
+  {
+    "id": "c010",
+    "title": "Flash Attention",
+    "summary": "IO-aware exact attention algorithm that reduces memory usage",
+    "level": "advanced",
+    "domain": "training",
+    "tags": ["optimization", "attention", "memory"],
+    "prereqIds": ["c006"],
+    "resources": []
+  },
+  {
+    "id": "c011",
+    "title": "GPU Architecture",
+    "summary": "Understanding GPU compute units, memory hierarchy, and bandwidth",
+    "level": "beginner",
+    "domain": "compute",
+    "tags": ["hardware", "gpu", "fundamentals"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c012",
+    "title": "GPU Memory Hierarchy",
+    "summary": "HBM, L2 cache, shared memory, and registers",
+    "level": "intermediate",
+    "domain": "compute",
+    "tags": ["hardware", "memory", "gpu"],
+    "prereqIds": ["c011"],
+    "resources": []
+  },
+  {
+    "id": "c013",
+    "title": "CUDA Programming Basics",
+    "summary": "Writing custom GPU kernels with CUDA",
+    "level": "intermediate",
+    "domain": "compute",
+    "tags": ["programming", "gpu", "cuda"],
+    "prereqIds": ["c011"],
+    "resources": []
+  },
+  {
+    "id": "c014",
+    "title": "Tensor Cores",
+    "summary": "Specialized matrix multiply-accumulate units for ML",
+    "level": "intermediate",
+    "domain": "compute",
+    "tags": ["hardware", "gpu", "performance"],
+    "prereqIds": ["c011"],
+    "resources": []
+  },
+  {
+    "id": "c015",
+    "title": "InfiniBand Networking",
+    "summary": "High-bandwidth, low-latency network fabric for HPC",
+    "level": "intermediate",
+    "domain": "networking",
+    "tags": ["networking", "hardware", "distributed"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c016",
+    "title": "NVLink & NVSwitch",
+    "summary": "NVIDIA's high-speed GPU-to-GPU interconnect",
+    "level": "intermediate",
+    "domain": "networking",
+    "tags": ["networking", "hardware", "gpu"],
+    "prereqIds": ["c011"],
+    "resources": []
+  },
+  {
+    "id": "c017",
+    "title": "NCCL (NVIDIA Collective Communications Library)",
+    "summary": "Optimized primitives for multi-GPU communication",
+    "level": "intermediate",
+    "domain": "networking",
+    "tags": ["networking", "distributed", "gpu"],
+    "prereqIds": ["c002", "c015"],
+    "resources": []
+  },
+  {
+    "id": "c018",
+    "title": "All-Reduce Communication Pattern",
+    "summary": "Combining results from all devices and distributing back",
+    "level": "beginner",
+    "domain": "networking",
+    "tags": ["distributed", "communication", "algorithms"],
+    "prereqIds": ["c001"],
+    "resources": []
+  },
+  {
+    "id": "c019",
+    "title": "Ring All-Reduce",
+    "summary": "Bandwidth-optimal all-reduce algorithm",
+    "level": "intermediate",
+    "domain": "networking",
+    "tags": ["distributed", "communication", "optimization"],
+    "prereqIds": ["c018"],
+    "resources": []
+  },
+  {
+    "id": "c020",
+    "title": "Data Loading Pipeline",
+    "summary": "Efficiently streaming training data to GPUs",
+    "level": "beginner",
+    "domain": "data",
+    "tags": ["data", "pipeline", "performance"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c021",
+    "title": "Data Preprocessing",
+    "summary": "Tokenization, normalization, and augmentation",
+    "level": "beginner",
+    "domain": "data",
+    "tags": ["data", "preprocessing", "ml"],
+    "prereqIds": ["c020"],
+    "resources": []
+  },
+  {
+    "id": "c022",
+    "title": "Data Sharding",
+    "summary": "Splitting datasets across multiple workers",
+    "level": "beginner",
+    "domain": "data",
+    "tags": ["data", "distributed", "pipeline"],
+    "prereqIds": ["c020"],
+    "resources": []
+  },
+  {
+    "id": "c023",
+    "title": "WebDataset Format",
+    "summary": "Tar-based dataset format for streaming large-scale data",
+    "level": "intermediate",
+    "domain": "data",
+    "tags": ["data", "format", "streaming"],
+    "prereqIds": ["c020"],
+    "resources": []
+  },
+  {
+    "id": "c024",
+    "title": "Object Storage (S3/GCS)",
+    "summary": "Cloud object storage systems for training data",
+    "level": "beginner",
+    "domain": "storage",
+    "tags": ["storage", "cloud", "data"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c025",
+    "title": "Distributed File Systems (HDFS/Lustre)",
+    "summary": "Parallel file systems for HPC environments",
+    "level": "intermediate",
+    "domain": "storage",
+    "tags": ["storage", "distributed", "filesystem"],
+    "prereqIds": ["c024"],
+    "resources": []
+  },
+  {
+    "id": "c026",
+    "title": "Checkpoint Storage",
+    "summary": "Saving and loading model checkpoints efficiently",
+    "level": "beginner",
+    "domain": "storage",
+    "tags": ["storage", "checkpointing", "reliability"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c027",
+    "title": "Model Registry",
+    "summary": "Versioning and tracking trained models",
+    "level": "beginner",
+    "domain": "mlops",
+    "tags": ["mlops", "versioning", "management"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c028",
+    "title": "Experiment Tracking",
+    "summary": "Logging metrics, hyperparameters, and artifacts",
+    "level": "beginner",
+    "domain": "mlops",
+    "tags": ["mlops", "monitoring", "tracking"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c029",
+    "title": "Learning Rate Schedules",
+    "summary": "Strategies for adjusting learning rate during training",
+    "level": "beginner",
+    "domain": "training",
+    "tags": ["optimization", "hyperparameters", "training"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c030",
+    "title": "Warmup Strategies",
+    "summary": "Gradually increasing learning rate at training start",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["optimization", "training", "stability"],
+    "prereqIds": ["c029"],
+    "resources": []
+  },
+  {
+    "id": "c031",
+    "title": "Loss Scaling",
+    "summary": "Preventing underflow in mixed precision training",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["optimization", "mixed-precision", "numerical"],
+    "prereqIds": ["c006"],
+    "resources": []
+  },
+  {
+    "id": "c032",
+    "title": "Batch Size Selection",
+    "summary": "Choosing optimal batch size for training",
+    "level": "beginner",
+    "domain": "training",
+    "tags": ["hyperparameters", "training", "optimization"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c033",
+    "title": "Large Batch Training",
+    "summary": "Techniques for training with very large batch sizes",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["optimization", "training", "distributed"],
+    "prereqIds": ["c032", "c002"],
+    "resources": []
+  },
+  {
+    "id": "c034",
+    "title": "Adam Optimizer",
+    "summary": "Adaptive moment estimation optimizer",
+    "level": "beginner",
+    "domain": "training",
+    "tags": ["optimization", "optimizer", "training"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c035",
+    "title": "AdamW",
+    "summary": "Adam with decoupled weight decay",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["optimization", "optimizer", "training"],
+    "prereqIds": ["c034"],
+    "resources": []
+  },
+  {
+    "id": "c036",
+    "title": "Distributed Optimizer State",
+    "summary": "Managing optimizer state in distributed training",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["distributed", "optimization", "memory"],
+    "prereqIds": ["c002", "c034"],
+    "resources": []
+  },
+  {
+    "id": "c037",
+    "title": "Fault Tolerance",
+    "summary": "Handling failures during long-running training jobs",
+    "level": "intermediate",
+    "domain": "reliability",
+    "tags": ["reliability", "distributed", "training"],
+    "prereqIds": ["c001"],
+    "resources": []
+  },
+  {
+    "id": "c038",
+    "title": "Elastic Training",
+    "summary": "Dynamically adding/removing workers during training",
+    "level": "advanced",
+    "domain": "reliability",
+    "tags": ["reliability", "distributed", "elasticity"],
+    "prereqIds": ["c037"],
+    "resources": []
+  },
+  {
+    "id": "c039",
+    "title": "Spot Instance Training",
+    "summary": "Using preemptible cloud instances for cost savings",
+    "level": "intermediate",
+    "domain": "cost",
+    "tags": ["cost", "cloud", "training"],
+    "prereqIds": ["c037"],
+    "resources": []
+  },
+  {
+    "id": "c040",
+    "title": "GPU Utilization Monitoring",
+    "summary": "Tracking GPU compute and memory usage",
+    "level": "beginner",
+    "domain": "monitoring",
+    "tags": ["monitoring", "gpu", "performance"],
+    "prereqIds": ["c011"],
+    "resources": []
+  },
+  {
+    "id": "c041",
+    "title": "Profiling Training Jobs",
+    "summary": "Identifying bottlenecks in training pipeline",
+    "level": "intermediate",
+    "domain": "monitoring",
+    "tags": ["monitoring", "profiling", "optimization"],
+    "prereqIds": ["c040"],
+    "resources": []
+  },
+  {
+    "id": "c042",
+    "title": "Throughput Optimization",
+    "summary": "Maximizing samples/tokens per second",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["optimization", "performance", "training"],
+    "prereqIds": ["c001", "c041"],
+    "resources": []
+  },
+  {
+    "id": "c043",
+    "title": "Kubernetes for ML",
+    "summary": "Orchestrating training workloads with Kubernetes",
+    "level": "intermediate",
+    "domain": "orchestration",
+    "tags": ["orchestration", "kubernetes", "infrastructure"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c044",
+    "title": "Kubeflow",
+    "summary": "ML platform built on Kubernetes",
+    "level": "intermediate",
+    "domain": "orchestration",
+    "tags": ["orchestration", "kubernetes", "mlops"],
+    "prereqIds": ["c043"],
+    "resources": []
+  },
+  {
+    "id": "c045",
+    "title": "Ray for Distributed Training",
+    "summary": "Distributed computing framework for ML workloads",
+    "level": "intermediate",
+    "domain": "orchestration",
+    "tags": ["orchestration", "distributed", "framework"],
+    "prereqIds": ["c001"],
+    "resources": []
+  },
+  {
+    "id": "c046",
+    "title": "Slurm Workload Manager",
+    "summary": "HPC job scheduler for training clusters",
+    "level": "intermediate",
+    "domain": "orchestration",
+    "tags": ["orchestration", "hpc", "scheduler"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c047",
+    "title": "Multi-Node Training Setup",
+    "summary": "Configuring training across multiple machines",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["distributed", "setup", "networking"],
+    "prereqIds": ["c001", "c015"],
+    "resources": []
+  },
+  {
+    "id": "c048",
+    "title": "Environment Reproducibility",
+    "summary": "Ensuring consistent training environments",
+    "level": "beginner",
+    "domain": "mlops",
+    "tags": ["mlops", "reproducibility", "containers"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c049",
+    "title": "Docker for ML",
+    "summary": "Containerizing ML training workloads",
+    "level": "beginner",
+    "domain": "mlops",
+    "tags": ["containers", "docker", "infrastructure"],
+    "prereqIds": ["c048"],
+    "resources": []
+  },
+  {
+    "id": "c050",
+    "title": "Hyperparameter Tuning",
+    "summary": "Systematically searching for optimal hyperparameters",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["optimization", "hyperparameters", "tuning"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c051",
+    "title": "Neural Architecture Search",
+    "summary": "Automatically discovering optimal model architectures",
+    "level": "advanced",
+    "domain": "training",
+    "tags": ["optimization", "architecture", "automl"],
+    "prereqIds": ["c050"],
+    "resources": []
+  },
+  {
+    "id": "c052",
+    "title": "Model Quantization",
+    "summary": "Reducing model precision for efficiency",
+    "level": "intermediate",
+    "domain": "optimization",
+    "tags": ["optimization", "quantization", "efficiency"],
+    "prereqIds": ["c006"],
+    "resources": []
+  },
+  {
+    "id": "c053",
+    "title": "Model Pruning",
+    "summary": "Removing unnecessary weights from trained models",
+    "level": "intermediate",
+    "domain": "optimization",
+    "tags": ["optimization", "compression", "efficiency"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c054",
+    "title": "Knowledge Distillation",
+    "summary": "Training smaller models to mimic larger ones",
+    "level": "intermediate",
+    "domain": "optimization",
+    "tags": ["optimization", "compression", "transfer-learning"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c055",
+    "title": "Multi-GPU Training",
+    "summary": "Training on multiple GPUs within a single node",
+    "level": "beginner",
+    "domain": "training",
+    "tags": ["distributed", "gpu", "training"],
+    "prereqIds": ["c001", "c011"],
+    "resources": []
+  },
+  {
+    "id": "c056",
+    "title": "Data Parallel Training with DDP",
+    "summary": "PyTorch DistributedDataParallel for efficient training",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["distributed", "pytorch", "training"],
+    "prereqIds": ["c002", "c055"],
+    "resources": []
+  },
+  {
+    "id": "c057",
+    "title": "FSDP (Fully Sharded Data Parallel)",
+    "summary": "PyTorch implementation of ZeRO optimization",
+    "level": "advanced",
+    "domain": "training",
+    "tags": ["distributed", "pytorch", "optimization"],
+    "prereqIds": ["c009", "c056"],
+    "resources": []
+  },
+  {
+    "id": "c058",
+    "title": "DeepSpeed",
+    "summary": "Microsoft's optimization library for large model training",
+    "level": "advanced",
+    "domain": "training",
+    "tags": ["framework", "optimization", "distributed"],
+    "prereqIds": ["c001", "c009"],
+    "resources": []
+  },
+  {
+    "id": "c059",
+    "title": "Megatron-LM",
+    "summary": "NVIDIA's framework for training massive language models",
+    "level": "advanced",
+    "domain": "training",
+    "tags": ["framework", "large-models", "distributed"],
+    "prereqIds": ["c003", "c004", "c005"],
+    "resources": []
+  },
+  {
+    "id": "c060",
+    "title": "Sequence Parallelism",
+    "summary": "Splitting sequence dimension across devices",
+    "level": "advanced",
+    "domain": "training",
+    "tags": ["parallelism", "optimization", "transformers"],
+    "prereqIds": ["c005"],
+    "resources": []
+  },
+  {
+    "id": "c061",
+    "title": "Training Stability",
+    "summary": "Preventing divergence and NaN losses",
+    "level": "intermediate",
+    "domain": "training",
+    "tags": ["training", "stability", "debugging"],
+    "prereqIds": ["c001"],
+    "resources": []
+  },
+  {
+    "id": "c062",
+    "title": "Gradient Clipping",
+    "summary": "Limiting gradient magnitudes to prevent instability",
+    "level": "beginner",
+    "domain": "training",
+    "tags": ["optimization", "stability", "training"],
+    "prereqIds": ["c061"],
+    "resources": []
+  },
+  {
+    "id": "c063",
+    "title": "Loss Spike Recovery",
+    "summary": "Recovering from sudden loss increases during training",
+    "level": "advanced",
+    "domain": "training",
+    "tags": ["training", "stability", "recovery"],
+    "prereqIds": ["c061"],
+    "resources": []
+  },
+  {
+    "id": "c064",
+    "title": "Activation Functions",
+    "summary": "Non-linear functions in neural networks",
+    "level": "beginner",
+    "domain": "training",
+    "tags": ["fundamentals", "neural-networks", "training"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c065",
+    "title": "Transformer Architecture",
+    "summary": "Self-attention based architecture for sequence modeling",
+    "level": "intermediate",
+    "domain": "architecture",
+    "tags": ["architecture", "transformers", "attention"],
+    "prereqIds": ["c064"],
+    "resources": []
+  },
+  {
+    "id": "c066",
+    "title": "Multi-Head Attention",
+    "summary": "Parallel attention mechanisms with different projections",
+    "level": "intermediate",
+    "domain": "architecture",
+    "tags": ["architecture", "attention", "transformers"],
+    "prereqIds": ["c065"],
+    "resources": []
+  },
+  {
+    "id": "c067",
+    "title": "Position Embeddings",
+    "summary": "Encoding positional information in sequences",
+    "level": "intermediate",
+    "domain": "architecture",
+    "tags": ["architecture", "transformers", "embeddings"],
+    "prereqIds": ["c065"],
+    "resources": []
+  },
+  {
+    "id": "c068",
+    "title": "Layer Normalization",
+    "summary": "Normalizing activations across features",
+    "level": "beginner",
+    "domain": "training",
+    "tags": ["optimization", "normalization", "training"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c069",
+    "title": "Residual Connections",
+    "summary": "Skip connections for training deep networks",
+    "level": "beginner",
+    "domain": "architecture",
+    "tags": ["architecture", "training", "fundamentals"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c070",
+    "title": "Tokenization Strategies",
+    "summary": "Converting text to model input tokens",
+    "level": "beginner",
+    "domain": "data",
+    "tags": ["data", "nlp", "preprocessing"],
+    "prereqIds": ["c021"],
+    "resources": []
+  },
+  {
+    "id": "c071",
+    "title": "Byte-Pair Encoding (BPE)",
+    "summary": "Subword tokenization algorithm",
+    "level": "intermediate",
+    "domain": "data",
+    "tags": ["data", "nlp", "tokenization"],
+    "prereqIds": ["c070"],
+    "resources": []
+  },
+  {
+    "id": "c072",
+    "title": "Vocabulary Management",
+    "summary": "Building and managing token vocabularies",
+    "level": "beginner",
+    "domain": "data",
+    "tags": ["data", "nlp", "preprocessing"],
+    "prereqIds": ["c070"],
+    "resources": []
+  },
+  {
+    "id": "c073",
+    "title": "Training Data Quality",
+    "summary": "Ensuring high-quality training datasets",
+    "level": "beginner",
+    "domain": "data",
+    "tags": ["data", "quality", "preprocessing"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c074",
+    "title": "Data Deduplication",
+    "summary": "Removing duplicate examples from training data",
+    "level": "intermediate",
+    "domain": "data",
+    "tags": ["data", "quality", "preprocessing"],
+    "prereqIds": ["c073"],
+    "resources": []
+  },
+  {
+    "id": "c075",
+    "title": "Data Filtering",
+    "summary": "Selecting high-quality examples from raw data",
+    "level": "intermediate",
+    "domain": "data",
+    "tags": ["data", "quality", "preprocessing"],
+    "prereqIds": ["c073"],
+    "resources": []
+  },
+  {
+    "id": "c076",
+    "title": "Data Mixing Strategies",
+    "summary": "Combining different data sources for training",
+    "level": "intermediate",
+    "domain": "data",
+    "tags": ["data", "training", "strategy"],
+    "prereqIds": ["c020"],
+    "resources": []
+  },
+  {
+    "id": "c077",
+    "title": "Curriculum Learning",
+    "summary": "Ordering training examples by difficulty",
+    "level": "advanced",
+    "domain": "training",
+    "tags": ["training", "strategy", "optimization"],
+    "prereqIds": ["c001"],
+    "resources": []
+  },
+  {
+    "id": "c078",
+    "title": "Cost Modeling",
+    "summary": "Estimating and tracking training costs",
+    "level": "intermediate",
+    "domain": "cost",
+    "tags": ["cost", "planning", "management"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c079",
+    "title": "Carbon Footprint",
+    "summary": "Measuring environmental impact of training",
+    "level": "intermediate",
+    "domain": "cost",
+    "tags": ["sustainability", "cost", "monitoring"],
+    "prereqIds": ["c078"],
+    "resources": []
+  },
+  {
+    "id": "c080",
+    "title": "Resource Allocation",
+    "summary": "Distributing compute resources across projects",
+    "level": "intermediate",
+    "domain": "orchestration",
+    "tags": ["orchestration", "management", "planning"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c081",
+    "title": "Training Job Scheduling",
+    "summary": "Prioritizing and queuing training workloads",
+    "level": "intermediate",
+    "domain": "orchestration",
+    "tags": ["orchestration", "scheduling", "management"],
+    "prereqIds": ["c080"],
+    "resources": []
+  },
+  {
+    "id": "c082",
+    "title": "Multi-Tenancy",
+    "summary": "Sharing infrastructure across teams",
+    "level": "advanced",
+    "domain": "orchestration",
+    "tags": ["orchestration", "infrastructure", "management"],
+    "prereqIds": ["c080"],
+    "resources": []
+  },
+  {
+    "id": "c083",
+    "title": "Model Evaluation Metrics",
+    "summary": "Measuring model quality and capabilities",
+    "level": "beginner",
+    "domain": "evaluation",
+    "tags": ["evaluation", "metrics", "quality"],
+    "prereqIds": [],
+    "resources": []
+  },
+  {
+    "id": "c084",
+    "title": "Benchmark Datasets",
+    "summary": "Standard datasets for model evaluation",
+    "level": "beginner",
+    "domain": "evaluation",
+    "tags": ["evaluation", "datasets", "benchmarks"],
+    "prereqIds": ["c083"],
+    "resources": []
+  },
+  {
+    "id": "c085",
+    "title": "Safety & Alignment",
+    "summary": "Ensuring models behave safely and as intended",
+    "level": "advanced",
+    "domain": "safety",
+    "tags": ["safety", "alignment", "ethics"],
+    "prereqIds": [],
+    "resources": []
+  }
+]
