@@ -1,0 +1,44 @@
+{
+  "name": "ai-infra-learning",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed": "tsx prisma/seed.ts",
+    "seed:examples": "tsx scripts/seed-example-lessons.ts",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^3.0.0",
+    "@mdx-js/react": "^3.0.0",
+    "@next/mdx": "^15.1.6",
+    "@prisma/client": "^6.2.0",
+    "@types/mdx": "^2.0.10",
+    "bullmq": "^5.29.3",
+    "cytoscape": "^3.30.3",
+    "cytoscape-cose-bilkent": "^4.1.0",
+    "ioredis": "^5.4.2",
+    "mermaid": "^11.4.1",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/cytoscape": "^3.21.10",
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.6",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.18.0",
+    "eslint-config-next": "^15.1.6",
+    "postcss": "^8.4.49",
+    "prisma": "^6.2.0",
+    "tailwindcss": "^3.4.18",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
